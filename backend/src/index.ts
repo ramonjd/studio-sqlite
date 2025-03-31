@@ -3,10 +3,10 @@ import SQLiteDatabase from 'better-sqlite3';
 import { getTables, getTableColumns, getTableRows, getOptions } from './api/index.js';
 import path from 'path';
 import process from 'process';
-import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Load environment variables from .env file
+dotenv.config();
 
 /**
  * Middleware for Express to handle SQLite database requests.
@@ -30,7 +30,6 @@ export default function StudioSQLite(
 		fileMustExist: true,
 	});
 	db.pragma('journal_mode = WAL');
-
 	if (app && process.env.NODE_ENV === 'production') {
 		app.use(express.static(path.join(__dirname, './frontend')));
 	}

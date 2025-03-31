@@ -1,4 +1,7 @@
-export const getTableColumns = (req, res, db) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getTableColumns = void 0;
+const getTableColumns = (req, res, db) => {
     const tableName = req.params.tableName;
     if (typeof tableName !== 'string' || !/^[a-zA-Z0-9_]+$/.test(tableName)) {
         res.status(400).send('Invalid table name');
@@ -17,4 +20,5 @@ export const getTableColumns = (req, res, db) => {
         console.error(error);
     }
 };
+exports.getTableColumns = getTableColumns;
 //# sourceMappingURL=getTableColumns.js.map
