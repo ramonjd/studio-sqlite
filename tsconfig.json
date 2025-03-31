@@ -4,7 +4,7 @@
       "esModuleInterop": true,
       "isolatedModules": true,
       "lib": ["es2022"],
-      "module": "es2022",
+      "module": "CommonJS",
       "moduleDetection": "force",
       "moduleResolution": "Node",
       "noUncheckedIndexedAccess": true,
@@ -16,6 +16,6 @@
       "strict": true,
       "target": "es2022"
     },
-    "exclude": ["node_modules", "_example"],
+    "exclude": ["node_modules", "_example", "build"],
     "include": ["./backend/src"]
 }

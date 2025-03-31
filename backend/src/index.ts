@@ -1,12 +1,12 @@
 import express from 'express';
 import SQLiteDatabase from 'better-sqlite3';
-import { getTables, getTableColumns, getTableRows, getOptions } from './api/index.js';
+import { getTables, getTableColumns, getTableRows, getOptions, chatWithLLM } from './api/index.js';
 import path from 'path';
 import process from 'process';
-import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Load environment variables from .env file
+dotenv.config();
 
 /**
  * Middleware for Express to handle SQLite database requests.
@@ -30,13 +30,22 @@ export default function StudioSQLite(
 		fileMustExist: true,
 	});
 	db.pragma('journal_mode = WAL');
-
+    // @TODO
+    // this check isn't appropriate for npm package
+    // Also the path should be relative.
 	if (app && process.env.NODE_ENV === 'production') {
-		app.use(express.static(path.join(__dirname, './frontend')));
+		app.use(express.static(path.join(path.dirname(require.resolve('./package.json')), 'frontend')));
 	}
 	router.get('/api/tables', (req, res) => getTables(req, res, db));
 	router.get('/api/tables/:tableName/columns', (req, res) => getTableColumns(req, res, db));
 	router.get('/api/tables/:tableName/rows', (req, res) => getTableRows(req, res, db));
 	router.get('/api/options/:optionName', (req, res) => getOptions(req, res, db));
+	
+	// Add body parser middleware for the chat endpoint
+	router.use(express.json());
+	
+	// Add the chat endpoint
+	router.post('/api/chat', (req, res) => chatWithLLM(req, res, db));
+	
 	return router;
 }

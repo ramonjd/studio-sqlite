@@ -2,10 +2,16 @@
   "name": "studio-sqlite",
   "private": true,
   "version": "0.0.0",
-  "main": "backend/src/index.ts",
-  "type": "module",
+  "main": "./build/index.js",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.js"
+    }
+  },
   "scripts": {
-    "dev": "nodemon --watch backend/src --watch _example --ext js,ts --exec 'npm run build && node --loader ts-node/esm _example/index.ts'",
+    "dev": "nodemon --watch backend/src --watch _example --ext js,ts --exec 'npm run build && node _example/index.js'",
     "lint": "eslint .",
     "watch": "tsc --watch",
     "backend": "node --watch build/index.js",
@@ -16,7 +22,7 @@
     "build:backend": "tsc",
     "build:frontend": "npm run build --prefix ./frontend",
     "build": "tsc && npm run build:frontend",
-    "start": "npm run build && NODE_ENV=production node --loader ts-node/esm ./_example/index.ts"
+    "start": "npm run build && NODE_ENV=production node ./_example/index.js"
   },
   "repository": "",
   "license": "MIT",
@@ -24,16 +30,19 @@
     "@types/better-sqlite3": "^7.6.12",
     "@wordpress/components": "^29.7.0",
     "better-sqlite3": "^11.9.1",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "openai": "^4.93.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.17.28",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.1",
     "eslint-plugin-prettier": "^5.2.5",
     "nodemon": "^3.1.9",

@@ -1,6 +1,7 @@
+import useTables from './useTables';
 import useGetOption from './useGetOption';
 import useTableColumns from './useTableColumns';
-import useTables from './useTables';
 import useGetTableRows from './useGetTableRows';
+import useChat from './useChat';
 
-export { useGetOption, useTableColumns, useTables, useGetTableRows };
+export { useGetOption, useTableColumns, useTables, useGetTableRows, useChat };
