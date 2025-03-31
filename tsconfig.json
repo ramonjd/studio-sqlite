@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "allowJs": true,
+      "esModuleInterop": true,
+      "isolatedModules": true,
+      "lib": ["es2022"],
+      "module": "ESNext",
+      "moduleDetection": "force",
+      "moduleResolution": "Node",
+      "noUncheckedIndexedAccess": true,
+      "outDir": "./build",
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "sourceMap": true,
+      "strict": true,
+      "target": "es2022"
+    },
+    "exclude": ["node_modules"],
+    "include": ["./backend/src"],
+    "type": "module"
+  }
