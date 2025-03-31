@@ -4,18 +4,18 @@
       "esModuleInterop": true,
       "isolatedModules": true,
       "lib": ["es2022"],
-      "module": "ESNext",
+      "module": "NodeNext",
       "moduleDetection": "force",
-      "moduleResolution": "Node",
+      "moduleResolution": "NodeNext",
       "noUncheckedIndexedAccess": true,
       "outDir": "./build",
+      "rootDir": "./backend/src",
       "resolveJsonModule": true,
       "skipLibCheck": true,
       "sourceMap": true,
       "strict": true,
       "target": "es2022"
     },
-    "exclude": ["node_modules"],
-    "include": ["./backend/src"],
-    "type": "module"
-  }
+    "exclude": ["node_modules", "_example"],
+    "include": ["./backend/src"]
+}
