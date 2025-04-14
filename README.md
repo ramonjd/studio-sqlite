@@ -1,6 +1,12 @@
 # Studio SQLite
 
-A React + TypeScript + Vite project.
+A React + TypeScript + Vite project. Demo only, or Work in Progress or whatever
+
+
+
+https://github.com/user-attachments/assets/579e1241-b84f-4390-800e-b92f9fc09a71
+
+
 
 ## Install
 
