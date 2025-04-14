@@ -21,6 +21,9 @@ Then run the vite frontend build/server:
 
 Go to `localhost:5173`
 
+## AI
+Add your OPEN AI key to `.env` file
+
 ## Run production build
 
 `npm start`
